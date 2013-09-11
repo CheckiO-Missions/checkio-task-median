@@ -1,34 +1,39 @@
 <p>
-    <i>( Describe task in general )</i>
+    A median is a number in a list that is in between the highest numbers and the lowest numbers.
+    If there is an even number of numbers, then there is no single middle value:
+    the median is then defined as the mean or average of the two middle values.
+    For this mission, you are given a list of integers. With it, you must separate the upper half of
+    the numbers, from the lower half and find the median.
+</p>
+
+
+<p>
+    <strong>Input: </strong> A list of integers.
 </p>
 
 <p>
-    Sum two passed ints
+    <strong>Output: </strong> A float.
 </p>
-
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
-</p>
-
-<p>
-    <strong>Output: </strong> Int. 
-</p>
-
-
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
+
     <p>
         <strong>Example:</strong>
     </p>
-    <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
-    </pre>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
 </div>
+
+
+<p class="for_info_only">
+    <strong>How it is used:</strong> The median has usage for Statistics and Probability theory.
+    It very significant value for skewed distribution. For example, we want to know average wealth of people and gained
+    some data -- 100 people have 100$ in month and 10 people have 1000000$. If we use average, then we have 91000$ at man.
+    This is weird value and don't show to us the real picture. So for this case the median will give to us more useful value.
+</p>
+<p  class="for_info_only">
+    <strong>Additional links:</strong> <a href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
+</p>

@@ -18,10 +18,9 @@
 }
 
 .animation-success div {
-    background-repeat: no-repeat;
     height: 60px;
     width: 390px;
-    background-image: url("http://www.checkio.org/static/imgv3/task_solved.png");
+    background: url("http://www.checkio.org/static/imgv3/task_solved.png") no-repeat;
 }
 
 .center-exp {
@@ -34,8 +33,10 @@
 .animation-content{
     background-color: #dfe8f7;
     color: #696969;
-    font-family: verdana;
+    font-family: Verdana, Arial, sans-serif;
     font-size: 15px;
+    
+    width: 100%;
 }
 
 .animation-content .call,
@@ -47,7 +48,7 @@
     margin: 10px;
     color: black;
     text-align: center;
-    letter-spacing: 0.7px;
+    letter-spacing: 1px;
     word-break: break-word;
     white-space: pre-wrap;
 }
@@ -57,9 +58,13 @@
     border-color: #de0202;
 }
 
+.animation-content .explanation svg {
+    padding: 10px 15px 0 15px;
+}
+
 .tryit-content {
     background-color: #dfe8f7;
-    font-family: verdana;
+    font-family: Verdana, Arial, sans-serif;
 }
 
 .tryit-content .tool td{
@@ -83,7 +88,7 @@
 .tryit-content .btn {
     padding: 4px 6px;
     font-size: 14px;
-    font-family: Verdana;
+    font-family: Verdana, Arial, sans-serif;
     font-weight: 500;
     line-height: 1.428571429;
     text-align: center;

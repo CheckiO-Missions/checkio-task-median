@@ -82,6 +82,41 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
         });
 
+        var $tryit;
+        var tCanvas;
+        var defaultArray = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6];
+
+        ext.set_console_process_ret(function (this_e, ret) {
+            try {
+                ret = JSON.parse(ret);
+            }
+            catch (err) {
+                $tryit.find(".checkio-result").html("Result<br>" + ret);
+                return false
+            }
+            $tryit.find(".checkio-result").html("Result<br>" + JSON.stringify(ret));
+        });
+
+        ext.set_generate_animation_panel(function (this_e) {
+
+            $tryit = $(this_e.setHtmlTryIt(ext.get_template('tryit')));
+            tCanvas = new MedianCanvas($tryit.find(".tryit-canvas")[0], defaultArray,
+                {"cell": 20, "height": 150, "font-size": 15, "x0": 10, "y0": 10, "unit": 15}
+            );
+            tCanvas.createCanvas();
+            tCanvas.createFeedback();
+            $tryit.find(".tryit-canvas").mousedown(function (e) {
+                e.originalEvent.preventDefault();
+            });
+            $tryit.find(".bn-check").click(function (e) {
+
+                this_e.sendToConsoleCheckiO(tCanvas.gatherData());
+                e.stopPropagation();
+                return false;
+            });
+        });
+
+
         function normalizeArray(list) {
             var res = [];
             var m = Math.max.apply(Math, list);
@@ -91,7 +126,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             return res;
         }
 
-        function MedianCanvas(dom, numbers) {
+        function MedianCanvas(dom, numbers, options) {
             var colorOrange4 = "#F0801A";
             var colorOrange3 = "#FA8F00";
             var colorOrange2 = "#FAA600";
@@ -111,32 +146,40 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             var format = Raphael.format;
 
-            var cell = 30;
-            var maxHeight = 200;
-            var fontSize = 15;
+            options = options || {};
+            var cell = options["cell"] || 30;
+            var maxHeight = options["height"] || 200;
+            var fontSize = options["font-size"] || 15;
+            var x0 = options["x0"] || 0;
+            var y0 = options["y0"] || 0;
+            var unit = options["unit"] || 10;
 
             var N = numbers.length;
-            var paper = Raphael(dom, (N - 1) * cell, maxHeight + fontSize * 2, 0, 0);
+            var paper = Raphael(dom, (N - 1) * cell + 2 * x0, y0 + maxHeight + fontSize * 2, 0, 0);
             var numSet = [];
+            var normArray;
 
             var attrLine = {"stroke": colorBlue3, "stroke-width": cell / 2, "stroke-linecap": "round"};
+            var attrShLine = {"stroke": colorGrey1, "stroke-width": cell / 2, "stroke-linecap": "round"};
             var attrText = {"stroke": colorBlue4, "font-size": fontSize, "font-family": "Verdana"};
+
+
             var animationTime = 1000;
             var delay = 300;
 
             this.createCanvas = function () {
-                var normArray = normalizeArray(numbers);
+                normArray = normalizeArray(numbers);
                 for (var i = 0; i < N; i++) {
                     var tempSet = paper.set();
                     tempSet.push(paper.path(format(
                         "M{0},{1}V{2}",
-                        i * cell,
-                        maxHeight,
-                        maxHeight * (1 - normArray[i])
+                        x0 + i * cell,
+                        y0 + maxHeight,
+                        y0 + maxHeight * (1 - normArray[i])
                     )).attr(attrLine));
                     tempSet.n = numbers[i];
                     tempSet.prevPos = i;
-                    tempSet.push(paper.text(i * cell, maxHeight + fontSize, numbers[i]).attr(attrText));
+                    tempSet.push(paper.text(x0 + i * cell, y0 + maxHeight + fontSize, numbers[i]).attr(attrText));
                     numSet.push(tempSet);
                 }
             };
@@ -151,13 +194,82 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                         numSet[i].animate({"transform": "t" + (diff * cell) + ",0" }, animationTime);
                     }
                 }, delay);
-                setTimeout(function() {
+                setTimeout(function () {
                     numSet[Math.floor(N / 2)].animate({"stroke": colorOrange4, "fill": colorOrange4}, animationTime / 2);
                     if (N % 2 == 0) {
                         numSet[Math.floor(N / 2) - 1].animate({"stroke": colorOrange4, "fill": colorOrange4}, animationTime / 2);
                     }
                 }, delay + animationTime);
+            };
 
+            var mouseDown = false;
+            var activeEl;
+
+            this.createFeedback = function () {
+                for (var i = 0; i < N; i++) {
+                    paper.path(format(
+                        "M{0},{1}V{2}",
+                        x0 + i * cell,
+                        y0 + maxHeight,
+                        y0)).attr(attrShLine).toBack();
+                }
+                activeEl = paper.rect(0, 5, cell * (N - 1) + 2 * x0, maxHeight + y0).attr(
+                    {"fill": colorBlue1, "fill-opacity": 0, "stroke-width": 0});
+                activeEl.mousedown(function (e) {
+                    mouseDown = true;
+                });
+                activeEl.mouseup(function (e) {
+                    mouseDown = false;
+                });
+                activeEl.mouseout(function (e) {
+                    mouseDown = false;
+                });
+                var changeBars = function (click) {
+                    return function (e) {
+                        if (!mouseDown && !click) {
+                            return false;
+                        }
+                        var x = Math.floor(e.offsetX / cell);
+                        var y = Math.round((y0 + maxHeight - e.offsetY) / unit);
+                        numSet[x][0].attr({"path": format(
+                            "M{0},{1}V{2}",
+                            x0 + x * cell,
+                            y0 + maxHeight,
+                            y0 + maxHeight - unit * y)});
+                        numSet[x][1].attr("text", y);
+                        numSet[x].n = y;
+                    }
+                };
+                var toggleBar = function (b) {
+                    return function(e) {
+                        if (numSet[b].off) {
+                            numSet[b].off = false;
+                            numSet[b][0].attr("stroke", colorBlue3);
+                            numSet[b][1].attr({"stroke": colorBlue4, "fill": colorBlue4});
+                        }
+                        else {
+                            numSet[b].off = true;
+                            numSet[b][0].attr("stroke", colorGrey2);
+                            numSet[b][1].attr({"stroke": colorGrey2, "fill": colorGrey2});
+                        }
+                    }
+                };
+                activeEl.mousemove(changeBars());
+                activeEl.click(changeBars(true));
+                for (i = 0; i < N; i++) {
+                    numSet[i][1].click(toggleBar(i));
+                }
+
+            };
+
+            this.gatherData = function() {
+                var res = [];
+                for (var i = 0; i < numSet.length; i++) {
+                    if (!numSet[i].off) {
+                        res.push(numSet[i].n);
+                    }
+                }
+                return res;
             }
         }
 

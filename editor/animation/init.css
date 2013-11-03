@@ -3,18 +3,18 @@
 /*Common*/
 
 .animation_results,
-.animation_results .x-panel-body{
+.animation_results .x-panel-body {
     background-color: #dfe8f7;
 }
 
 .tryit_results,
-.tryit_results .x-panel-body{
+.tryit_results .x-panel-body {
     background-color: #dfe8f7;
     overflow: auto;
 }
 
 .animation-success {
-    background: linear-gradient(to bottom, #ffac54 0%,#ff8d2c 100%);
+    background: linear-gradient(to bottom, #ffac54 0%, #ff8d2c 100%);
 }
 
 .animation-success div {
@@ -24,24 +24,24 @@
 }
 
 .center-exp {
-    margin-left:auto;
-    margin-right:auto;
-    display:table;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
 /* Animation */
-.animation-content{
+.animation-content {
     background-color: #dfe8f7;
     color: #696969;
     font-family: Verdana, Arial, sans-serif;
     font-size: 15px;
-    
+
     width: 100%;
 }
 
 .animation-content .call,
 .animation-content .answer,
-.animation-content .output{
+.animation-content .output {
     font-weight: bold;
     padding: 10px;
     border: 2px dotted #a9a9a9;
@@ -53,7 +53,7 @@
     white-space: pre-wrap;
 }
 
-.animation-content .error{
+.animation-content .error {
     color: #de0202;
     border-color: #de0202;
 }
@@ -67,7 +67,7 @@
     font-family: Verdana, Arial, sans-serif;
 }
 
-.tryit-content .tool td{
+.tryit-content .tool td {
     text-align: center;
     vertical-align: top;
     padding: 3px;
@@ -78,7 +78,7 @@
     height: 20%;
 }
 
-.tryit-content .checkio-result{
+.tryit-content .checkio-result {
     font-size: 16px;
     text-align: center;
     color: #294270;
@@ -131,8 +131,7 @@ fieldset[disabled] .btn {
 }
 
 .tryit-content input[type="text"],
-.tryit-content input[type="number"]
-{
+.tryit-content input[type="number"] {
     display: inline-block;
     padding: 4px 6px;
     font-size: 14px;
@@ -150,7 +149,7 @@ fieldset[disabled] .btn {
 }
 
 .tryit-content input[type="text"]:focus,
-.tryit-content input[type="number"]:focus{
+.tryit-content input[type="number"]:focus {
     border-color: rgba(82, 168, 236, 0.8);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -158,10 +157,27 @@ fieldset[disabled] .btn {
 }
 
 .tryit-content input[type="text"][disabled],
-.tryit-content input[type="number"][readonly]{
+.tryit-content input[type="number"][readonly] {
     cursor: not-allowed;
     background-color: #eeeeee;
 }
 
-/* Your CSS */
-/*          */
+.tryit-content td button {
+    display: block;
+    margin: 20px auto 10px auto;
+}
+
+.tryit-content text {
+    cursor: pointer;
+}
+
+.tryit-content .tryit-canvas * {
+    /*padding: 10px 0 5px 0;*/
+    /*margin-top: 20px;*/
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

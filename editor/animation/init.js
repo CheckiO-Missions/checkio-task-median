@@ -126,6 +126,20 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             return res;
         }
 
+        function median(list) {
+            if (list.length === 0) {
+                return 0;
+            }
+            var ml = list.concat().sort(function(a, b) {return Number(a) - Number(b)});
+            var l = ml.length;
+            if (l % 2) {
+                return ml[Math.floor(l / 2)];
+            }
+            else {
+                return (ml[l / 2] + ml[l / 2 - 1]) / 2;
+            }
+        }
+
         function MedianCanvas(dom, numbers, options) {
             var colorOrange4 = "#F0801A";
             var colorOrange3 = "#FA8F00";
@@ -155,13 +169,17 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var unit = options["unit"] || 10;
 
             var N = numbers.length;
-            var paper = Raphael(dom, (N - 1) * cell + 2 * x0, y0 + maxHeight + fontSize * 2, 0, 0);
+            var fullSizeX = (N - 1) * cell + 2 * x0;
+            var paper = Raphael(dom, fullSizeX, y0 + maxHeight + fontSize * 2, 0, 0);
             var numSet = [];
             var normArray;
+
+            var medianLine;
 
             var attrLine = {"stroke": colorBlue3, "stroke-width": cell / 2, "stroke-linecap": "round"};
             var attrShLine = {"stroke": colorGrey1, "stroke-width": cell / 2, "stroke-linecap": "round"};
             var attrText = {"stroke": colorBlue4, "font-size": fontSize, "font-family": "Verdana"};
+            var attrMedian = {"stroke": colorOrange3, "stroke-dasharray": "- ", "stroke-width": 1};
 
 
             var animationTime = 1000;
@@ -182,6 +200,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                     tempSet.push(paper.text(x0 + i * cell, y0 + maxHeight + fontSize, numbers[i]).attr(attrText));
                     numSet.push(tempSet);
                 }
+
             };
 
             this.animateCanvas = function () {
@@ -205,7 +224,26 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var mouseDown = false;
             var activeEl;
 
+
+            this.gatherData = function() {
+                var res = [];
+                for (var i = 0; i < numSet.length; i++) {
+                    if (!numSet[i].off) {
+                        res.push(numSet[i].n);
+                    }
+                }
+                return res;
+            };
+
+            var gatherData = this.gatherData;
+
+            var changeMedian = function() {
+                var m = median(gatherData());
+                medianLine.attr("path", format("M0,{0}H{1}", y0 + maxHeight - m * unit, fullSizeX));
+            };
+
             this.createFeedback = function () {
+                medianLine = paper.path(format("M0,{0}H{1}", y0 + maxHeight - median(numbers) * unit, fullSizeX)).attr(attrMedian);
                 for (var i = 0; i < N; i++) {
                     paper.path(format(
                         "M{0},{1}V{2}",
@@ -226,18 +264,22 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 });
                 var changeBars = function (click) {
                     return function (e) {
+
                         if (!mouseDown && !click) {
                             return false;
                         }
                         var x = Math.floor(e.offsetX / cell);
-                        var y = Math.round((y0 + maxHeight - e.offsetY) / unit);
-                        numSet[x][0].attr({"path": format(
-                            "M{0},{1}V{2}",
-                            x0 + x * cell,
-                            y0 + maxHeight,
-                            y0 + maxHeight - unit * y)});
-                        numSet[x][1].attr("text", y);
-                        numSet[x].n = y;
+                        if (!numSet[x].off) {
+                            var y = Math.round((y0 + maxHeight - e.offsetY) / unit);
+                            numSet[x][0].attr({"path": format(
+                                "M{0},{1}V{2}",
+                                x0 + x * cell,
+                                y0 + maxHeight,
+                                y0 + maxHeight - unit * y)});
+                            numSet[x][1].attr("text", y);
+                            numSet[x].n = y;
+                        }
+                        changeMedian();
                     }
                 };
                 var toggleBar = function (b) {
@@ -251,7 +293,15 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                             numSet[b].off = true;
                             numSet[b][0].attr("stroke", colorGrey2);
                             numSet[b][1].attr({"stroke": colorGrey2, "fill": colorGrey2});
+                            numSet[b][0].attr({"path": format(
+                                "M{0},{1}V{2}",
+                                x0 + b * cell,
+                                y0 + maxHeight,
+                                y0 + maxHeight)});
+                            numSet[b][1].attr("text", 0);
+                            numSet[b].n = 0;
                         }
+                        changeMedian();
                     }
                 };
                 activeEl.mousemove(changeBars());
@@ -262,15 +312,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             };
 
-            this.gatherData = function() {
-                var res = [];
-                for (var i = 0; i < numSet.length; i++) {
-                    if (!numSet[i].off) {
-                        res.push(numSet[i].n);
-                    }
-                }
-                return res;
-            }
+
+
+
         }
 
 

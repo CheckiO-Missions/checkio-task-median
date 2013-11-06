@@ -87,14 +87,16 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
         var defaultArray = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6];
 
         ext.set_console_process_ret(function (this_e, ret) {
-            try {
-                ret = JSON.parse(ret);
+            var numbRet = Number(ret);
+            if (!isNaN(numbRet)) {
+                if (numbRet < 11 && numbRet >= 0) {
+                    tCanvas.createMedian(numbRet);
+                }
+                $tryit.find(".checkio-result").html("Result<br>" + JSON.stringify(numbRet));
             }
-            catch (err) {
-                $tryit.find(".checkio-result").html("Result<br>" + ret);
-                return false
+            else {
+                $tryit.find(".checkio-result").html("Result<br>" + JSON.stringify(ret));
             }
-            $tryit.find(".checkio-result").html("Result<br>" + JSON.stringify(ret));
         });
 
         ext.set_generate_animation_panel(function (this_e) {
@@ -109,7 +111,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 e.originalEvent.preventDefault();
             });
             $tryit.find(".bn-check").click(function (e) {
-
+                tCanvas.removeMedian();
                 this_e.sendToConsoleCheckiO(tCanvas.gatherData());
                 e.stopPropagation();
                 return false;
@@ -130,7 +132,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             if (list.length === 0) {
                 return 0;
             }
-            var ml = list.concat().sort(function(a, b) {return Number(a) - Number(b)});
+            var ml = list.concat().sort(function (a, b) {
+                return Number(a) - Number(b)
+            });
             var l = ml.length;
             if (l % 2) {
                 return ml[Math.floor(l / 2)];
@@ -185,6 +189,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var animationTime = 1000;
             var delay = 300;
 
+            var obj = this;
+
             this.createCanvas = function () {
                 normArray = normalizeArray(numbers);
                 for (var i = 0; i < N; i++) {
@@ -225,7 +231,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var activeEl;
 
 
-            this.gatherData = function() {
+            this.gatherData = function () {
                 var res = [];
                 for (var i = 0; i < numSet.length; i++) {
                     if (!numSet[i].off) {
@@ -237,13 +243,19 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 
             var gatherData = this.gatherData;
 
-            var changeMedian = function() {
-                var m = median(gatherData());
-                medianLine.attr("path", format("M0,{0}H{1}", y0 + maxHeight - m * unit, fullSizeX));
+            this.createMedian = function (m) {
+                medianLine = paper.path(format("M0,{0}H{1}", y0 + maxHeight - m * unit, fullSizeX)).attr(attrMedian);
+            };
+
+            this.removeMedian = function () {
+                if (medianLine) {
+                    medianLine.remove();
+                    medianLine = false;
+                }
             };
 
             this.createFeedback = function () {
-                medianLine = paper.path(format("M0,{0}H{1}", y0 + maxHeight - median(numbers) * unit, fullSizeX)).attr(attrMedian);
+
                 for (var i = 0; i < N; i++) {
                     paper.path(format(
                         "M{0},{1}V{2}",
@@ -279,11 +291,11 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                             numSet[x][1].attr("text", y);
                             numSet[x].n = y;
                         }
-                        changeMedian();
+                        obj.removeMedian();
                     }
                 };
                 var toggleBar = function (b) {
-                    return function(e) {
+                    return function (e) {
                         if (numSet[b].off) {
                             numSet[b].off = false;
                             numSet[b][0].attr("stroke", colorBlue3);
@@ -301,7 +313,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                             numSet[b][1].attr("text", 0);
                             numSet[b].n = 0;
                         }
-                        changeMedian();
+                        obj.removeMedian();
+//                        changeMedian();
                     }
                 };
                 activeEl.mousemove(changeBars());
@@ -311,8 +324,6 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 }
 
             };
-
-
 
 
         }

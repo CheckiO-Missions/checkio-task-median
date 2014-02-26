@@ -3,7 +3,7 @@
     In a list where there are an odd number of entities, the median is the number found in the middle of the list.
     If the list contains an even number of entities, then there is no single middle value, instead the median becomes
     the average of the two numbers found in the middle.
-    For this mission, you are given a list of integers. With it, you must separate the upper half of
+    For this mission, you are given a list of natural numbers (X). With it, you must separate the upper half of
     the numbers from the lower half and find the median.
 </p>
 
@@ -35,10 +35,13 @@ checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
     a set of
     data -- 100 people earn $100 in month and 10 people earn $1,000,000. If we find the average, then we get $91,000.
     This is weird value and does nothing to show us the real picture. In this case the median would give to us more
-    useful value and a better picture.
+    useful value and a better picture. <a href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
 </p>
-<p class="for_info_only">
-    <strong>Additional links:</strong> <a href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
+
+
+<p><strong>Precondition: </strong><br>
+    |X| = N; 0 < N < 1000<br>
+    &forall; x ∈ X : 0 &le; x < 10<sup>6</sup>
 </p>
 
 <p class="for_info_only">

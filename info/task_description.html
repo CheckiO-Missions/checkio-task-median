@@ -3,7 +3,7 @@
     In a list where there are an odd number of entities, the median is the number found in the middle of the list.
     If the list contains an even number of entities, then there is no single middle value, instead the median becomes
     the average of the two numbers found in the middle.
-    For this mission, you are given a list of natural numbers (X). With it, you must separate the upper half of
+    For this mission, you are given a non-empty list of natural numbers (X). With it, you must separate the upper half of
     the numbers from the lower half and find the median.
 </p>
 
@@ -13,7 +13,7 @@
 </p>
 
 <p>
-    <strong>Output: </strong> A float.
+    <strong>Output: </strong> The median, a float.
 </p>
 
 <div class="for_info_only">
@@ -40,7 +40,7 @@ checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
 
 
 <p><strong>Precondition: </strong><br>
-    |X| = N; 0 < N < 1000<br>
+    |X| = N; 1 < N &le; 1000<br>
     &forall; x ∈ X : 0 &le; x < 10<sup>6</sup>
 </p>
 

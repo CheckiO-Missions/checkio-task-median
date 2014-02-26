@@ -74,10 +74,11 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 $content.find('.answer').remove();
             }
 
-            var canvas = new MedianCanvas($content.find(".explanation")[0], checkioInput);
-            canvas.createCanvas();
-            canvas.animateCanvas();
-
+            if (explanation) {
+                var canvas = new MedianCanvas($content.find(".explanation")[0], checkioInput);
+                canvas.createCanvas();
+                canvas.animateCanvas();
+            };
             this_e.setAnimationHeight($content.height() + 60);
 
         });

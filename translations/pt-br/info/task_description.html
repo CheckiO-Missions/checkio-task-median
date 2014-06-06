@@ -1,0 +1,52 @@
+<p>
+    A mediana é um valor numérico que separa a metade superior de um vetor ordenado de números da metade inferior.
+    Em um vetor onde há um número ímpar de elementos, a mediana é o valor encontrado no centro do vetor.
+    Se o vetor contém um número par de elementos, então não existe um valor único no centro, ao invés disso a mediana torna-se 
+    a média dos dois valores encontrados no centro.
+    Para esta missão, você recebe um vetor não vazio de números naturais (X). Com isso, você deve separar a parte superior 
+    do vetor de números da metade inferior e encontrar a mediana.
+</p>
+     
+
+<p>
+    <strong>Entrada: </strong> Um vetor na forma de lista (list) de inteiros (int).
+</p>
+
+<p>
+    <strong>Saida: </strong> A mediana como um numero real (float) ou um inteiro (int).
+</p>
+
+<div class="for_info_only">
+
+    <p>
+        <strong>Exemplo:</strong>
+    </p>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
+</div>
+
+
+<p class="for_info_only">
+    <strong>Como é utilizado:</strong>
+    A mediana possui aplicações na teoria de Probabilidade e Estatística, 
+    tem sobretudo um valor significativo para distribuições assimétricas.
+    Por exemplo: queremos saber a renda média de um grupo de pessoas em um conjunto de dados -- 
+    100 pessoas recebem $100 por mês e 10 pessoas recebem $1,000,000. Se calcularmos a media aritmética, 
+    obtemos $91,000. Este é um numero estranho que não nos mostra a imagem real.
+    Neste caso, a mediana nos daria um valor mais útil e um melhor reflexo da realidade.
+    <a href="http://en.wikipedia.org/wiki/Median">Artigo da Wikipedia.</a>
+</p>
+
+
+<p><strong>Condições prévias: </strong><br>
+    1 < |X| &le; 1000<br>
+    all(0 &le; x < 10 ** 6 for x in array)
+</p>
+
+<p class="for_info_only">
+    <strong>Como utilizar TryIt: </strong><br>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
+</p>

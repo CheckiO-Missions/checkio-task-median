@@ -1,0 +1,53 @@
+<p>
+    A medián – az egy számérték, amely egy rendezett számértékeket tartalmazó tömböt 
+    egy nagyobb és egy kisebb részre osztja fel. A páratlan számú elemeket tartalmazó 
+    tömbben a medián – az pont a tömb közepén található számértékű elem. Egy páros számú 
+    elemeket tartalmazó tömbben pedig, amelyben pontosan a tömb közepén nem található egy 
+    elem sem, a medián – az a tömb közepén álló két számértékű elem középértéke. Ebben a 
+    feladatban adott egy természetes számokból álló nem üres tömb. 
+    A feladata: megtalálni a tömb mediánját!
+</p>
+
+
+<p>
+    <strong>Bemeneti adatok: </strong> egy listaként (list) megadott számértékeket (int) tartalmazó tömb.
+</p>
+
+<p>
+    <strong>Kimeneti adatok: </strong> a számértékként (int, float) visszaadott medián.
+</p>
+
+<div class="for_info_only">
+
+    <p>
+        <strong>Példák:</strong>
+    </p>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
+</div>
+
+
+<p class="for_info_only">
+    <strong>Alkalmazása:</strong>
+    A mediánt a statisztikában és a valószínűség-számításban használják, különösen nagy 
+    jelentősége van az aszimmetrikus eloszlások esetében. Például: meg szeretnénk állapítani 
+    a lakosság átlagjövedelmét: 100 ember 100 dollárt keres havonta, míg 10 ember – 1 000 000 dollárt. 
+    Ha meghatározzuk a középértéket, akkor 91 000 dollárt kapunk. Ez egy elég különös szám, 
+    amely nem mutatja meg számunkra a dolgok valós állását. Ebben az esetben a medián sokkal 
+    hasznosabb értékként szolgál számunkra és inkább valósághű képed ad számunkra.
+    <a href="http://hu.wikipedia.org/wiki/Medi%C3%A1n">Cikk a Wikipédiában.</a>
+</p>
+
+
+<p><strong>Előfeltételek: </strong><br>
+    1 < len(array) &le; 1000<br>
+    all(0 &le; x < 10 ** 6 for x in array)
+</p>
+
+<p class="for_info_only">
+    <strong>Így kell használni a TryIt interaktív ellenőrzőt: </strong><br>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
+</p>

@@ -1,0 +1,52 @@
+<p>
+	メジアン(中央値)は整列した配列の上位半分と下位半分を分離する数値です。
+	配列に奇数個の数があるときはメジアンは配列の中央の値です。
+	配列に偶数個の数があるときは、中央の値は一つではないので、代わりに中央の二つの値の平均になります．
+	このミッションでは自然数の空でない配列(X)が与えられて、上位半分と下位半分を分離してメジアンを見つけます。
+</p>
+
+
+<p>
+    <strong>入力: </strong> 配列、整数のリスト
+</p>
+
+<p>
+    <strong>出力: </strong> メジアン、浮動小数点または整数
+</p>
+
+<div class="for_info_only">
+
+    <p>
+        <strong>例:</strong>
+    </p>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
+</div>
+
+
+<p class="for_info_only">
+	<strong>使用法:</strong>
+	メジアンは統計と確率の理論のために使われます。特に偏った分布のための重要な値です。
+	例えば、データの集合から人々の富の平均を知りたいとします。100人は月に$100を稼ぎ
+	10人は$1,000,000を稼ぎます。平均を取ると$91,000ということになります。
+	でもこれは実体を表していないので良い値ではありません。
+	この場合メジアンは有用な値を与えて実体を反映するでしょう。
+	<a href="http://en.wikipedia.org/wiki/Median">Wikipediaの記事.</a>
+	(訳注 <a href=http://ja.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E5%80%A4">日本語版</a>)
+</p>
+
+
+<p><!-- <strong>Precondition: </strong><br> -->
+	<strong>事前条件: </strong><br>
+    1 < |X| &le; 1000<br>
+    all(0 &le; x < 10 ** 6 for x in array) 
+</p>
+
+<p class="for_info_only">
+    <!-- <strong>How to use TryIt: </strong><br> -->
+	<strong>TryItの使い方: </strong><br>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
+</p>

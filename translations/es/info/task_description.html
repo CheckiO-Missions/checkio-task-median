@@ -1,0 +1,53 @@
+<p>
+    La mediana representa el valor en la posición central de un conjunto de datos ordenados.
+    En una lista con un número impar de elementos la mediana se encuentra en la posición central.
+    Si la lista tiene un número par de elementos, no existe un valor central que divida la lista
+    en dos partes iguales por lo que la mediana equivale a la media de los dos valores centrales.
+    En esta misión, recibirás una lista no vacía de números naturales (X). Con ella deberás de 
+    separar la parte superior e inferior para encontrar la mediana.
+</p>
+
+
+<p>
+    <strong>Entrada: </strong> Lista de enteros.
+</p>
+
+<p>
+    <strong>Salida: </strong> La mediana en formato entero/flotante.
+</p>
+
+<div class="for_info_only">
+
+    <p>
+        <strong>Ejemplo:</strong>
+    </p>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
+</div>
+
+
+<p class="for_info_only">
+    <strong>Utilidad:</strong>
+    La mediana se usa en estadística y teoría de probabilidad,
+    con relevante importancia en distribuciones asimétricas.
+    Por ejemplo: Podemos saber la media de la riqueza de las personas dentro un conjunto de datos --
+    100 personas ganan 100&euro;/mes y 10 personas ganan 1,000,000&euro;/mes.
+    Si calculamos la media de estos datos, obtenemos 91,000&euro;/mes. Como podemos observar
+    este valor no representa la realidad de la población estudiada.
+    Sin embargo, usando la mediana podemos obtener un valor más cercano a la realidad.
+    <a href="http://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)">Mediana (Wikipedia)</a>
+</p>
+
+
+<p><strong>Precondiciones: </strong><br>
+    1 < |X| &le; 1000<br>
+    all(0 &le; x < 10 ** 6 for x in array)
+</p>
+
+<p class="for_info_only">
+    <strong>Como usar el interfaz: </strong><br>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
+</p>

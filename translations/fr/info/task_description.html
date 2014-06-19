@@ -1,0 +1,52 @@
+<p>
+	Une médiane est une valeur numérique qui sépare la motié supérieure d'un tableau classé de nombres de la moitié inférieure.
+	Dans une liste ou il y a un nombre impair d'entités, la médiane est le nombre qui se trouve au milieu du tableau.
+	Si le tableau contient un nombre pair de valeurs, il n'y a pas d'unique valeur au milieu, la mediane devient donc la moyenne 
+	des deux valeurs du milieu du tableau.
+	Pour cette mission on vous fourni un tableau rempli de nombres naturels (N). 
+	Vous devez séparer la moitié supérieure des nombres de la moitié inférieure et trouver la médiane.
+</p>
+
+
+<p>
+    <strong>Saisie: </strong> Un tableau contenant une liste d'entiers.
+</p>
+
+<p>
+    <strong>Sortie: </strong> La médiane sous forme flottante ou entière.
+</p>
+
+<div class="for_info_only">
+
+    <p>
+        <strong>Exemple:</strong>
+    </p>
+<pre class="brush: python">checkio([1, 2, 3, 4, 5]) == 3
+checkio([3, 1, 2, 5, 3]) == 3
+checkio([1, 300, 2, 200, 1]) == 2
+checkio([3, 6, 20, 99, 10, 15]) == 12.5</pre>
+
+</div>
+
+
+<p class="for_info_only">
+    <strong>Comment le mettre en pratique:</strong>
+    La médiane s'utilise en statistiques et en probabilité,
+    elle a une valeur significatif pour les distributions faussées.
+    Par exemple: on veut savoir la richesse moyenne des personnes d'une liste de données --
+    100 personne gagnent 100$ par mois et 10 personne gagnent 1.000.000$. Si on fait une moyenne,
+    on obtient 91.000$. Cette une valeur étrange qui ne traduit pas vraiment la réalité de la situation.
+    Dans ce cas une médiane nous donnerait une valeur plus efficace et une meilleure image de la réalité.
+    <a href="http://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)">L'article sur Wikipedia.</a>
+</p>
+
+
+<p><strong>Precondition: </strong><br>
+    1 < |X| &le; 1000<br>
+    all(0 &le; x < 10 ** 6 for x in array)
+</p>
+
+<p class="for_info_only">
+    <strong>Comment utiliser TryIt: </strong><br>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
+</p>

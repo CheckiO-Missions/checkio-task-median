@@ -60,6 +60,9 @@
 
 .animation-content .explanation svg {
     padding: 10px 15px 0 15px;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
 }
 
 .tryit-content {

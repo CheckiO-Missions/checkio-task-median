@@ -245,6 +245,10 @@ requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
 
         }
         var io = new extIO({
+            functions: {
+                js: 'median',
+                python: 'checkio'
+            },
             animation: function($expl, data){
                 var checkioInput = data.in;
                 if (!checkioInput){

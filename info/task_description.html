@@ -29,14 +29,14 @@
     </p>
 <pre class="brush: python">{% if interpreter.slug == "js-node" %}
 median([1, 2, 3, 4, 5]) == 3
-median([3, 1, 2, 5, 3]) == 3
+median([3, 1, 2, 5, 3]) == 2
 median([1, 300, 2, 200, 1]) == 2
-median([3, 6, 20, 99, 10, 15]) == 12.5
+median([3, 6, 20, 99, 10, 15]) == 59.5
 {% else %}
 checkio([1, 2, 3, 4, 5]) == 3
-checkio([3, 1, 2, 5, 3]) == 3
+checkio([3, 1, 2, 5, 3]) == 2
 checkio([1, 300, 2, 200, 1]) == 2
-checkio([3, 6, 20, 99, 10, 15]) == 12.5
+checkio([3, 6, 20, 99, 10, 15]) == 59.5
 {% endif %}</pre>
 
 </div>
@@ -49,7 +49,7 @@ checkio([3, 6, 20, 99, 10, 15]) == 12.5
     For example: we want to know average wealth of people from a set of data --
     100 people earn $100 in month and 10 people earn $1,000,000. If we average it out,
     we get $91,000. This is weird value and does nothing to show us the real picture.
-    In this case the median would give to us more useful value and a better picture.
+    In this case the median taken from list of values sorted in ascending order would give to us more useful value and a better picture.
     <a href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
 </p>
 

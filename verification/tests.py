@@ -10,9 +10,9 @@ Each test is dict with
 TESTS = {
     "Basics": [
         {"input": [1, 2, 3, 4, 5], "answer": 3, "explanation": True},
-        {"input": [3, 1, 2, 5, 3], "answer": 3, "explanation": True},
+        {"input": [3, 1, 2, 5, 3], "answer": 2, "explanation": True},
         {"input": [1, 300, 2, 200, 1], "answer": 2, "explanation": True},
-        {"input": [3, 6, 20, 99, 10, 15], "answer": 12.5, "explanation": True},
+        {"input": [3, 6, 20, 99, 10, 15], "answer": 25.5, "explanation": True},
         {
             "input": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
             "answer": 5,

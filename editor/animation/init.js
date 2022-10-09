@@ -1,5 +1,5 @@
 //Dont change it
-requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
+requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
     function (extIO, $, rr) {
         var $tryit;
         var tCanvas;
@@ -245,10 +245,6 @@ requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
 
         }
         var io = new extIO({
-            functions: {
-                js: 'median',
-                python: 'checkio'
-            },
             animation: function($expl, data){
                 var checkioInput = data.in;
                 if (!checkioInput){
@@ -258,8 +254,6 @@ requirejs(['ext_editor_io', 'jquery_190', 'raphael_210'],
                 canvas.createCanvas();
                 canvas.animateCanvas();
             },
-            tryit:tryitPanel,
-            retConsole:retConsole
         });
         io.start();
     }

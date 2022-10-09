@@ -5,56 +5,35 @@
 </div>
 
 <p>
-    A median is a numerical value separating the upper half of a <strong>sorted</strong> array of numbers from the lower half.
-    In a list where there are an odd number of entities, the median is the number found in the middle of the array.
-    If the array contains an even number of entities, then there is no single middle value, instead the median becomes
-    the average of the two numbers found in the middle.
-    For this mission, you are given a non-empty array of natural numbers (X). With it, you must separate the upper half of
-    the numbers from the lower half and find the median.
+    A median is a numerical value separating the upper half of a <strong>sorted</strong> {% if is_js %}Array{% else %}list{% endif %} of numbers from the lower half. In {% if is_js %}an Array{% else %}a list{% endif %} where there are an odd number of entities, the median is the number found in the middle of the {% if is_js %}Array{% else %}list{% endif %}. If the {% if is_js %}Array{% else %}list{% endif %} contains an even number of entities, then there is no single middle value, instead the median becomes the average of the two numbers found in the middle. For this mission, you are given a non-empty {% if is_js %}Array{% else %}list{% endif %} of natural {% if is_js %}numbers{% else %}integers{% endif %}. With it, you must separate the upper half of the numbers from the lower half and find the median.
 </p>
 
 
 <p>
-    <strong>Input: </strong> An array as a list of integers.
+    <strong>Input:</strong> {% if is_js %}An Array with numbers{% else %}A list of integers{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> The median as a float or an integer.
+    <strong>Output:</strong> The median as a float or an integer.
 </p>
 
 <div class="for_info_only">
-
     <p>
-        <strong>Example:</strong>
+        <strong>Examples:</strong>
     </p>
-<pre class="brush: python">{% if interpreter.slug == "js-node" %}
-median([1, 2, 3, 4, 5]) == 3
-median([3, 1, 2, 5, 3]) == 3
-median([1, 300, 2, 200, 1]) == 2
-median([3, 6, 20, 99, 10, 15]) == 12.5
-{% else %}
-checkio([1, 2, 3, 4, 5]) == 3
-checkio([3, 1, 2, 5, 3]) == 3
-checkio([1, 300, 2, 200, 1]) == 2
-checkio([3, 6, 20, 99, 10, 15]) == 12.5
-{% endif %}</pre>
-
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
-<br>
 
 <p class="for_info_only">
     <strong>How it is used:</strong>
-    The median has usage for Statistics and Probability theory,
-    it has especially significant value for skewed distribution.
-    For example: we want to know average wealth of people from a set of data --
-    100 people earn $100 in month and 10 people earn $1,000,000. If we average it out,
-    we get $91,000. This is weird value and does nothing to show us the real picture.
-    In this case the median would give to us more useful value and a better picture.
-    <a href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
+    The median has usage for Statistics and Probability theory, it has especially significant value for skewed distribution. For example: we want to know average wealth of people from a set of data - 100 people earn $100 in month and 10 people earn $1,000,000. If we average it out, we get $91,000. This is weird value and does nothing to show us the real picture. In this case the median would give to us more useful value and a better picture.
+    <a target="_blank" href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
 </p>
 
-
-<p><strong>Precondition: </strong><br>
-    1 &lt; len(data) &le; 1000<br>
-    all(0 &le; x < 10 ** 6 for x in data)
+<p>
+    <strong>Preconditions:</strong>
+    <ul>
+        <li>1 &lt; len(data) &le; 1000</li>
+        <li>all(0 &le; x < 10 ** 6 for x in data)</li>
+    </ul>
 </p>

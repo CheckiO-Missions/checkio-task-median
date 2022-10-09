@@ -250,7 +250,7 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
                 if (!checkioInput){
                     return;
                 }
-                var canvas = new MedianCanvas($expl[0], checkioInput);
+                var canvas = new MedianCanvas($expl[0], checkioInput[0]);
                 canvas.createCanvas();
                 canvas.animateCanvas();
             },

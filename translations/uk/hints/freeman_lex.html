@@ -1,7 +1,7 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        Я уявлення не маю, як розв'язувати цю місію.
+        <i>Я уявлення не маю, як розв'язувати цю місію.</i>
     </div>
     <div class="answer">
         <p>
@@ -11,7 +11,7 @@
 </div>
 <div class="question-answer">
     <div class="question">
-        З чого мені почати?
+        <i>З чого мені почати?</i>
     </div>
     <div class="answer">
         <p>
@@ -24,11 +24,11 @@ items = sorted(data)
 </div>
 <div class="question-answer">
     <div class="question">
-        Як знайти середній індекс (або два)? 
+        <i>Як знайти середній індекс (або два)?</i> 
     </div>
     <div class="answer">
         <p>
-            У цьому випадку, вбудована функція <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> стане тобі в нагоді. Вона повертає частку і остачу від ділення. Тобі потрібно поділити довжину <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> списку <b class="code">items</b> на <b class="code">2</b>.
+            У цьому випадку, вбудована функція <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> стане тобі в нагоді. Вона повертає частку (індекс) і остачу від ділення. Тобі потрібно поділити довжину <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> списку <b class="code">items</b> на <b class="code">2</b>.
         </p>
         <pre class="brush: python">
 items = sorted(data)
@@ -38,7 +38,7 @@ ind, rem = divmod(len(items), 2)
 </div>
 <div class="question-answer">
     <div class="question">
-        Я не розумію, як вирахувати медіану маючи індекс і остачу.
+        <i>Я не розумію, як вирахувати медіану маючи індекс і остачу.</i>
     </div>
     <div class="answer">
         <p>
@@ -53,7 +53,7 @@ median = items[ind] if rem == 1 else ...
 </div>
 <div class="question-answer">
     <div class="question">
-        Допоможи мені завершити вираз умови!
+        <i>Допоможи мені завершити вираз умови!</i>
     </div>
     <div class="answer">
     <p>
@@ -75,7 +75,7 @@ median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
 </div>
 <div class="question-answer">
     <div class="question">
-        То як має виглядати мій остаточний розв'язок?
+        <i>То як має виглядати мій остаточний розв'язок?</i>
     </div>
     <div class="answer">
         <p>Тобі лише потрібно обгорнути свій код у вираз функції і повернути <b class="code">median</b>.</p>
@@ -93,8 +93,8 @@ def checkio(data: list[int]) -> int | float:
 </div>
 <div class="question-answer">
     <div class="question">
-        Покажи мені більше розв'язків!<br />
-        Адже я хочу стати справжнім Python Ніндзею!
+        <i>Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!</i>
     </div>
     <div class="answer">
         <p>Звісно, тримай!</p>
@@ -120,7 +120,7 @@ from statistics import median as checkio
 </div>
 <div class="question-answer">
     <div class="question">
-        Дякую! Тепер я знаю і розумію більше! Все працює як слід!
+        <i>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</i>
     </div>
     <div class="answer">
         Приємно це чути!

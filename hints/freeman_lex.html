@@ -1,7 +1,7 @@
 <body data-author="freeman_lex">
 <div class="question-answer">
     <div class="question">
-        I have no idea how to start solving this mission.
+        <i>I have no idea how to start solving this mission.</i>
     </div>
     <div class="answer">
         <p>
@@ -11,7 +11,7 @@
 </div>
 <div class="question-answer">
     <div class="question">
-        What should I start from?
+        <i>What should I start from?</i>
     </div>
     <div class="answer">
         <p>
@@ -24,11 +24,11 @@ items = sorted(data)
 </div>
 <div class="question-answer">
     <div class="question">
-        How to find the middle index (or two of them)? 
+        <i>How to find the middle index (or two of them)?</i>
     </div>
     <div class="answer">
         <p>
-            It this case the build-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> function will be very useful for you. It returns quotient and reminder from division. You need to divide the <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> of the <b class="code">items</b> into <b class="code">2</b>.
+            It this case the build-in <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> function will be very useful for you. It returns quotient (index) and reminder from division. You need to divide the <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> of the <b class="code">items</b> into <b class="code">2</b>.
         </p>
         <pre class="brush: python">
 items = sorted(data)
@@ -38,7 +38,7 @@ ind, rem = divmod(len(items), 2)
 </div>
 <div class="question-answer">
     <div class="question">
-        I don't understand, how to calculate median having the index and reminder.
+        <i>I don't understand, how to calculate median having the index and reminder.</i>
     </div>
     <div class="answer">
         <p>
@@ -53,11 +53,11 @@ median = items[ind] if rem == 1 else ...
 </div>
 <div class="question-answer">
     <div class="question">
-        Help me to finish this condition!
+        <i>Help me to finish this condition!</i>
     </div>
     <div class="answer">
     <p>
-        If you repeat logic from previous hint to the list with en even number of elements, you find out, than you need elements with indexes <b class="code">ind</b> and <b class="code">ind - 1</b>. Now find the average between the two elements with these indexes.
+        If you repeat logic from previous hint to the list with an even number of elements, you find out, than you need elements with indexes <b class="code">ind</b> and <b class="code">ind - 1</b>. Now find the average between the two elements with these indexes.
         It is the function result for the list with even number of elements (<b class="code">rem == 0</b>). 
     </p>
         <pre class="brush: python">
@@ -75,7 +75,7 @@ median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
 </div>
 <div class="question-answer">
     <div class="question">
-        So, how my final solution should look like?
+        <i>So, how my final solution should look like?</i>
     </div>
     <div class="answer">
         <p>You just need to wrap the code into function expression and return <b class="code">median</b>.</p>
@@ -93,8 +93,8 @@ def checkio(data: list[int]) -> int | float:
 </div>
 <div class="question-answer">
     <div class="question">
-        Show me more solutions!<br />
-        'Cause I wanna be a real Python Ninnjaa!
+        <i>Show me more solutions!<br />
+        'Cause I wanna be a real Python Ninnjaa!</i>
     </div>
     <div class="answer">
         <p>Sure, grab it!</p>
@@ -121,7 +121,7 @@ from statistics import median as checkio
 </div>
 <div class="question-answer">
     <div class="question">
-        Thanks! I know and understand more now! Everything works fine!
+        <i>Thanks! I know and understand more now! Everything works fine!</i>
     </div>
     <div class="answer">
         Glad to hear it!

@@ -1,0 +1,129 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <i>Я уявлення не маю, як розв'язувати цю місію.</i>
+    </div>
+    <div class="answer">
+        <p>
+            Ідея у тому, щоб відсортувати початковий список і, залежно від його довжини, знайти один або два елементи посередині за їх індексами. Тоді повернути один або середнє з двох значень.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>З чого мені почати?</i>
+    </div>
+    <div class="answer">
+        <p>
+            Оскільки медіана - це атрибут сортованого списку, тобі слід отримати такий з твого початкового списку з використанням вбудованої функції <a target="_blank" href="https://www.w3schools.com/python/ref_func_sorted.asp">sorted()</a>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Як знайти середній індекс (або два)?</i> 
+    </div>
+    <div class="answer">
+        <p>
+            У цьому випадку, вбудована функція <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> стане тобі в нагоді. Вона повертає частку (індекс) і остачу від ділення. Тобі потрібно поділити довжину <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> списку <b class="code">items</b> на <b class="code">2</b>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Я не розумію, як вирахувати медіану маючи індекс і остачу.</i>
+    </div>
+    <div class="answer">
+        <p>
+            Давай подумаємо разом. Якщо ти маєш список із непарною кількістю елементів, наприклад, 5, твій <b class="code">ind</b> буде <b class="code">2</b> і <b class="code">rem</b> - <b class="code">1</b>. Знаючи, що в Python відлік починається з 0, елемент з індексом 2 насправді третій елемент в списку із п'яти елементів - середній елемент, який ти шукаєш. Тож, якщо <b class="code">rem == 1</b> (непарна кількість елементів), результат функції - <b class="code">items[ind]</b>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Допоможи мені завершити вираз умови!</i>
+    </div>
+    <div class="answer">
+    <p>
+        Якщо ти повториш логіку з попередньої підказки для списку із парною кількістю елементів, то з'ясуєш, що тобі потрібні елементи з індексами <b class="code">ind</b> і <b class="code">ind - 1</b>. Тепер знайди середнє між двома елементами з цими індексами.
+        Це і буде результатом функції для списку із парною кількістю елементів (<b class="code">rem == 0</b>). 
+    </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else (items[ind - 1] + items[ind]) / 2
+        </pre>
+        <p>
+            Ти можеш використати <b class="code">rem</b> як індекс, а варіанти - як елементи кортежу і переписати вираз <b class="code">median</b>.
+        </p>
+        <pre class="brush: python">
+median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>То як має виглядати мій остаточний розв'язок?</i>
+    </div>
+    <div class="answer">
+        <p>Тобі лише потрібно обгорнути свій код у вираз функції і повернути <b class="code">median</b>.</p>
+        <p>Ось повне рішення:</p>
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    items = sorted(data)
+    ind, rem = divmod(len(items), 2)
+    median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+
+    return median
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Покажи мені більше розв'язків!<br />
+        Адже я хочу стати справжнім Python Ніндзею!</i>
+    </div>
+    <div class="answer">
+        <p>Звісно, тримай!</p>
+        <p>
+            Якщо твоя змінна <b class="code">half</b> має значення <b class="code">2</b> наприклад, ти фактично береш третій елемент з початку списку. <b class="code">~</b> надає тобі дійсний третій елемент з кінця списку. Для списку із непарно кількістю елементів це буде один і той же елемент. Дізнайся більше у цьому <a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">поясненні</a> англійською мовою.
+        </p>
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    data.sort()
+    half = len(data) // 2
+
+    return (data[half] + data[~half]) / 2
+        </pre>
+        <p>
+            У стандартній бібліотеці Python є модуль <b class="code">statistics</b> з функцією <b class="code">median</b>. У цьому розв'язку, коли ти викликаєш функцію <b class="code">checkio(data)</b>, викликається <b class="code">median(data)</b>.
+        </p>
+        <pre class="brush: python">
+from statistics import median as checkio
+        </pre>
+        <p>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <i>Дякую! Тепер я знаю і розумію більше! Все працює як слід!</i>
+    </div>
+    <div class="answer">
+        Приємно це чути!
+    </div>
+</div>
+</body>

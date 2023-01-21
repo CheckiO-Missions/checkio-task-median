@@ -12,6 +12,7 @@ print('Example:')
 print(checkio([1, 2, 3, 4, 5]))
 {% endblock %}
 
+# These "asserts" are used for self-checking
 {% block tests %}
 {% for t in tests %}
 assert {% block call %}checkio({{t.input|p_args}}){% endblock %} == {% block result %}{{t.answer|p}}{% endblock %}{% endfor %}

@@ -103,6 +103,7 @@ def checkio(data: list[int]) -> int | float:
         <p>
             If your <b class="code">half</b> is <b class="code">2</b> for example, you actually take the third element from the beginning of the list. <b class="code">~</b> gives you the actual third element from the end of the list. For the list with the odd number of elements it will be the same element. Read more in this <a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">explanation</a>.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(data: list[int]) -> int | float:
 
@@ -111,12 +112,15 @@ def checkio(data: list[int]) -> int | float:
 
     return (data[half] + data[~half]) / 2
         </pre>
+        </div>
         <p>
             There is <b class="code">statistics</b> module in Python standard library with <b class="code">median</b> function. It this solution, when you call <b class="code">checkio(data)</b> the <b class="code">median(data)</b> is called.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from statistics import median as checkio
         </pre>
+        </div>
         <p><b>Click "Best solutions" at mission menu and see a lot of other
         interesting solutions!</b></p>
     </div>

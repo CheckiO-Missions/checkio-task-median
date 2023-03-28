@@ -103,6 +103,7 @@ def checkio(data: list[int]) -> int | float:
         <p>
             Якщо твоя змінна <b class="code">half</b> має значення <b class="code">2</b> наприклад, ти фактично береш третій елемент з початку списку. <b class="code">~</b> надає тобі дійсний третій елемент з кінця списку. Для списку із непарно кількістю елементів це буде один і той же елемент. Дізнайся більше у цьому <a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">поясненні</a> англійською мовою.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 def checkio(data: list[int]) -> int | float:
 
@@ -111,12 +112,15 @@ def checkio(data: list[int]) -> int | float:
 
     return (data[half] + data[~half]) / 2
         </pre>
+        </div>
         <p>
             У стандартній бібліотеці Python є модуль <b class="code">statistics</b> з функцією <b class="code">median</b>. У цьому розв'язку, коли ти викликаєш функцію <b class="code">checkio(data)</b>, викликається <b class="code">median(data)</b>.
         </p>
+        <div class="spoiler">
         <pre class="brush: python">
 from statistics import median as checkio
         </pre>
+        </div>
         <p>Тисни "Best solutions" в меню місії і побачиш багато інших цікавих розв'язків!</p>
     </div>
 </div>

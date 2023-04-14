@@ -1,0 +1,33 @@
+<div class="story" style="margin-bottom: 0">
+    <div style="text-align: center">
+        <img src="{{MEDIA}}elki.png" title="elki" alt="elki" width="600px">
+    </div>
+</div>
+
+<p>
+    Медіана - це числове значення, що відокремлює верхню половину <strong>відсортованого</strong> {% if is_js %}масиву <span translate="no">(Array)</span>{% else %}list <span translate="no">(list)</span>{% endif %} чисел від нижньої половини. У {% if is_js %}Array <span translate="no">(Array)</span>{% else %}list <span translate="no">(list)</span>{% endif %}, де є непарна кількість елементів, медіана - це число, яке знаходиться в середині {% if is_js %}Array <span translate="no">(Array)</span>{% else %}list <span translate="no">(list)</span>{% endif %}. Якщо {% if is_js %}Array <span translate="no">(Array)</span>{% else %}list <span translate="no">(list)</span>{% endif %} містить парну кількість об'єктів, то єдиного середнього значення не існує, натомість медіаною стає середнє з двох чисел, що знаходяться посередині. Для виконання цієї місії вам надається непорожній {% if is_js %}масив <span translate="no">(Array)</span>{% else %}список <span translate="no">(list)</span>{% endif %} натуральних {% if is_js %}чисел <span translate="no">(numbers)</span>{% else %}цілих <span translate="no">(integers)</span>{% endif %}. З його допомогою ви повинні відокремити верхню половину чисел від нижньої і знайти медіану</p>
+
+<p>
+    Якщо ви хочете більше потренуватися з подібним випадком, спробуйте місію <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a> </p>
+
+<p>
+   <strong>Вхідні дані:</strong> {% if is_js %}Масив <span translate="no">(Array)</span> з числами{% else %}Список <span translate="no">(list)</span> цілих чисел{% endif %}</p>
+
+<p>
+   <strong>Виведення:</strong> Медіана як число з плаваючою комою або ціле число</p>
+
+<div class="for_info_only">
+    <p>
+       <strong>Приклади</strong>   </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p class="for_info_only">
+   <strong>Як використовується:</strong>Медіана використовується в статистиці та теорії ймовірностей, особливо важлива для асиметричних розподілів. Наприклад: ми хочемо дізнатися середній статок людей з набору даних - 100 людей заробляють $100 на місяць і 10 людей заробляють $1,000,000. Якщо ми усереднимо їх, то отримаємо $91,000. Це дивна величина, яка нічого не говорить нам про реальну картину. У цьому випадку медіана дала б нам більше корисної інформації та кращу картину. <a target="_blank" href="http://en.wikipedia.org/wiki/Median">Стаття у Вікіпедії</a></p>
+
+<p>
+   <strong>Передумови</strong>   <ul>
+        <li>1 &lt; len(data) &le; 1000</li>
+        <li>all(0 &le; x &lt; 10 ** 6 для x у даних)</li>
+    </ul>
+</p>

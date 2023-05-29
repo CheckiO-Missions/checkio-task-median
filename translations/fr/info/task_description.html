@@ -3,60 +3,40 @@
         <img src="{{MEDIA}}elki.png" title="elki" alt="elki" width="600px">
     </div>
 </div>
+
 <p>
-	Une médiane est une valeur numérique qui sépare la motié supérieure d'un tableau classé de nombres de la moitié inférieure.
-	Dans une liste ou il y a un nombre impair d'entités, la médiane est le nombre qui se trouve au milieu du tableau.
-	Si le tableau contient un nombre pair de valeurs, il n'y a pas d'unique valeur au milieu, la mediane devient donc la moyenne 
-	des deux valeurs du milieu du tableau.
-	Pour cette mission on vous fourni un tableau rempli de nombres naturels (N). 
-	Vous devez séparer la moitié supérieure des nombres de la moitié inférieure et trouver la médiane.
+    Une médiane est une valeur numérique qui sépare la moitié supérieure d'un<span>tableau</span> <strong>trié</strong> {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>list</span>{% endif %} de nombres de la moitié inférieure. Dans le<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %} où il y a un nombre impair d'entités, la médiane est le nombre qui se trouve au milieu du<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>liste</span> <span>(list)</span>{% endif %}. Si le<span>tableau</span> {% if is_js %}<span></span> <span>(array)</span><span> </span>{% else %} <span>list</span>{% endif %} contient un nombre pair d'entités, il n'y a pas de valeur médiane unique, mais la médiane devient la moyenne des deux nombres trouvés au milieu. Pour cette mission, on vous donne un<span>tableau</span> non vide {% if is_js %} <span>(array)</span><span> </span>{% else %} <span>list</span>{% endif %} d'<span>entiers</span> naturels {% if is_js %} <span>(numbers)</span><span> </span>{% else %} <span>(integers)</span> {% endif %}. Avec ce tableau, vous devez séparer la moitié supérieure des nombres de la moitié inférieure et trouver la médiane.
 </p>
 
 <p>
-    If you want to practice more with the similar case, try
-    <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a> mission.
+    Si vous souhaitez vous entraîner davantage avec le cas similaire, essayez la mission <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a>.
 </p>
 
 <p>
-    <strong>Saisie: </strong> Un tableau contenant une liste d'entiers.
+   <strong>Entrée:</strong> {% if is_js %}Un <span>tableau</span> <span>(array)</span> avec des <span>nombres</span> <span>(numbers)</span>{% else %} Une <span>liste</span> <span>(list)</span> d'<span>entiers</span> <span>(integers)</span>{% endif %}.
 </p>
 
 <p>
-    <strong>Sortie: </strong> La médiane sous forme flottante ou entière.
+   <strong>Sortie:</strong> La médiane sous la forme d'un nombre flottant ou d'un nombre entier.
 </p>
 
 <div class="for_info_only">
-
     <p>
-        <strong>Exemple:</strong>
+        <strong>Exemples:</strong>
     </p>
-<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
-
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
-
 <p class="for_info_only">
-    <strong>Comment le mettre en pratique:</strong>
-    La médiane s'utilise en statistiques et en probabilité,
-    elle a une valeur significatif pour les distributions faussées.
-    Par exemple: on veut savoir la richesse moyenne des personnes d'une liste de données --
-    100 personne gagnent 100$ par mois et 10 personne gagnent 1.000.000$. Si on fait une moyenne,
-    on obtient 91.000$. Cette une valeur étrange qui ne traduit pas vraiment la réalité de la situation.
-    Dans ce cas une médiane nous donnerait une valeur plus efficace et une meilleure image de la réalité.
-    <a href="http://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)">L'article sur Wikipedia.</a>
+   <strong>Comment l'utiliser:</strong>
+    La médiane est utilisée en statistique et en théorie des probabilités. Elle a une valeur particulièrement importante pour les distributions asymétriques. Par exemple: nous voulons connaître la richesse moyenne des personnes à partir d'un ensemble de données - 100 personnes gagnent 100 $ par mois et 10 personnes gagnent 1 000 000 $. Si nous faisons la moyenne, nous obtenons 91 000 $. Il s'agit d'une valeur bizarre qui ne nous donne aucune idée de la situation réelle. Dans ce cas, la médiane nous donnerait une valeur plus utile et une meilleure image.
+   <a target="_blank" href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
 </p>
 
-
-<p><strong>Precondition: </strong><br>
+<p>
+    <strong>Conditions préalables:</strong>
     <ul>
         <li>1 &lt; len(data) &le; 1000</li>
-        <li>all(0 &le; x < 10 ** 6 for x in data)</li>
+        <li>all(0 &le; x &lt; 10 ** 6 for x in data)</li>
     </ul>
 </p>
-
-<!--
-<p class="for_info_only">
-    <strong>Comment utiliser TryIt: </strong><br>
-    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
-</p>
--->

@@ -1,0 +1,42 @@
+<div class="story" style="margin-bottom: 0">
+    <div style="text-align: center">
+        <img src="{{MEDIA}}elki.png" title="elki" alt="elki" width="600px">
+    </div>
+</div>
+
+<p>
+    Mediana to wartość liczbowa oddzielająca górną połowę <strong>posortowanej</strong> {% if is_js %}tablicy <span>(array)</span>{% else %} listy <span>(list)</span>{% endif %} liczb od dolnej połowy. W tablicy {% if is_js %} <span>(array)</span> {% else %} liście <span>(list)</span>{% endif %} , gdzie jest nieparzysta liczba jednostek, mediana jest liczbą znajdującą się w środku tablicy {% if is_js %} <span>(array)</span> {% else %} listy <span>(list)</span>{% endif %}. Jeśli tablica {% if is_js %} <span>(array)</span> {% else %} list{% endif %} zawiera parzystą liczbę jednostek, wówczas nie ma jednej wartości środkowej, zamiast tego mediana staje się średnią dwóch liczb znalezionych w środku. W tym zadaniu otrzymują Państwo niepustą tablicę {% if is_js %} <span>(array)</span> {% else %} listę <span>(list)</span>{% endif %} liczb całkowitych <span>{% if is_js %}(number){% else %}(int){% endif %}</span>. Proszę oddzielić górną połowę liczb od dolnej i znaleźć medianę.
+</p>
+
+<p>
+    Jeśli chce Pan/Pani poćwiczyć z podobnym przypadkiem, proszę wypróbować zadanie <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a>.
+</p>
+
+<p>
+   <strong>Wejście:</strong> {% if is_js %}Tablica <span>(array)</span> z liczbami całkowitymi <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> Mediana jako liczba całkowita <span>{% if is_js %}(number){% else %}or float (int | float){% endif %}</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Przykłady:</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p class="for_info_only">
+   <strong>Jak jest używana:</strong>
+    Mediana ma zastosowanie w statystyce i teorii prawdopodobieństwa, ma szczególnie istotną wartość dla rozkładów skośnych. Na przykład: chcemy poznać średnie bogactwo ludzi z zestawu danych - 100 osób zarabia 100 USD miesięcznie, a 10 osób zarabia 1 000 000 USD. Jeśli je uśrednimy, otrzymamy 91 000 USD. Jest to dziwna wartość i nie pokazuje nam prawdziwego obrazu. W tym przypadku mediana dałaby nam bardziej użyteczną wartość i lepszy obraz.
+   <a target="_blank" href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
+</p>
+
+<p>
+    <strong>Warunki wstępne:</strong>
+    <ul>
+        <li>1 &lt; len(data) &le; 1000</li>
+        <li>all(0 &le; x &lt; 10 ** 6 for x in data)</li>
+    </ul>
+</p>

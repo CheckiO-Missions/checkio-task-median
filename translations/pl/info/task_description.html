@@ -5,19 +5,19 @@
 </div>
 
 <p>
-    Mediana to wartość liczbowa oddzielająca górną połowę <strong>posortowanej</strong> {% if is_js %}tablicy <span>(array)</span>{% else %} listy <span>(list)</span>{% endif %} liczb od dolnej połowy. W tablicy {% if is_js %} <span>(array)</span> {% else %} liście <span>(list)</span>{% endif %} , gdzie jest nieparzysta liczba jednostek, mediana jest liczbą znajdującą się w środku tablicy {% if is_js %} <span>(array)</span> {% else %} listy <span>(list)</span>{% endif %}. Jeśli tablica {% if is_js %} <span>(array)</span> {% else %} list{% endif %} zawiera parzystą liczbę jednostek, wówczas nie ma jednej wartości środkowej, zamiast tego mediana staje się średnią dwóch liczb znalezionych w środku. W tym zadaniu otrzymują Państwo niepustą tablicę {% if is_js %} <span>(array)</span> {% else %} listę <span>(list)</span>{% endif %} liczb całkowitych <span>{% if is_js %}(number){% else %}(int){% endif %}</span>. Proszę oddzielić górną połowę liczb od dolnej i znaleźć medianę.
+    Mediana to wartość liczbowa oddzielająca górną połowę <strong>posortowanej</strong> {% if is_js %}tablicy{% else %}listy{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> liczb od dolnej połowy. W tablicy {% if is_js %}{% else %} liście{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> gdzie istnieje nieparzysta liczba jednostek, mediana jest liczbą znajdującą się w środku tablicy {% if is_js %}{% else %} listy{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>. Jeśli tablica {% if is_js %}{% else %} lista{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> zawiera parzystą liczbę jednostek, wówczas nie ma pojedynczej wartości środkowej, zamiast tego mediana staje się średnią dwóch liczb znalezionych w środku. W tym zadaniu otrzymują Państwo niepustą tablicę {% if is_js %}{% else %} listę{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> liczb całkowitych <span>{% if is_js %}(number){% else %}(int){% endif %}</span>. Musi Pan/Pani oddzielić górną połowę liczb od dolnej połowy i znaleźć medianę.
 </p>
 
 <p>
-    Jeśli chce Pan/Pani poćwiczyć z podobnym przypadkiem, proszę wypróbować zadanie <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a>.
+    Jeśli chce Pan/Pani poćwiczyć z podobnym przypadkiem, proszę wypróbować misję <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a>.
 </p>
 
 <p>
-   <strong>Wejście:</strong> {% if is_js %}Tablica <span>(array)</span> z liczbami całkowitymi <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+   <strong>Wejście:</strong> {% if is_js %}Tablica{% else %}Lista{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> z liczbami całkowitymi <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
 
 <p>
-   <strong>Dane wyjściowe:</strong> Mediana jako liczba całkowita <span>{% if is_js %}(number){% else %}or float (int | float){% endif %}</span>.
+   <strong>Dane wyjściowe:</strong> Mediana jako liczba całkowita lub zmiennoprzecinkowa <span>{% if is_js %}(number){% else %}(int | float){% endif %}</span>.
 </p>
 
 <div class="for_info_only">

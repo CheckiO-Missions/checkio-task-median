@@ -1,0 +1,137 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Nie mam pojęcia, jak zacząć rozwiązywać tę misję.</p>
+    </div>
+    <div class="answer">
+        <p>
+            pomysł polega na posortowaniu początkowej listy i, w zależności od jej długości, znalezieniu jednego lub dwóch elementów w środku według ich indeksów. Następnie proszę zwrócić jeden lub średnią wartość dwóch elementów.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Od czego powinienem zacząć?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Ponieważ mediana jest atrybutem posortowanej listy, powinien Pan uzyskać posortowaną listę z początkowych elementów za pomocą wbudowanej funkcji <a target="_blank" href="https://www.w3schools.com/python/ref_func_sorted.asp">sorted()</a>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Jak znaleźć środkowy indeks (lub dwa z nich)?</p>
+    </div>
+    <div class="answer">
+        <p>
+            W tym przypadku wbudowana funkcja <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> będzie dla Państwa bardzo przydatna. Zwraca ona iloraz (indeks) i wynik dzielenia. Proszę podzielić <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> z <b class="code">items</b> na <b class="code">2</b>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Nie rozumiem, jak obliczyć medianę, mając indeks i przypomnienie.</p>
+    </div>
+    <div class="answer">
+        <p>
+            Proszę się zastanowić. Jeśli ma Pan listę o nieparzystej liczbie elementów, na przykład 5, Pana <b class="code">ind</b> będzie <b class="code">2</b>, a <b class="code">rem</b> - <b class="code">1</b>. Wiedząc, że liczenie zaczyna się od 0 w Pythonie, element o indeksie 2 jest w rzeczywistości trzecim na liście pięciu - środkowym elementem, którego szukamy. Tak więc, jeśli <b class="code">rem == 1</b> (nieparzysta liczba elementów) wynikiem funkcji jest <b class="code">items[ind]</b>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Proszę mi pomóc dokończyć ten warunek!</p>
+    </div>
+    <div class="answer">
+    <p>
+        Jeśli powtórzymy logikę z poprzedniej podpowiedzi do listy z parzystą liczbą elementów, dowiemy się, że potrzebujemy elementów o indeksach <b class="code">ind</b> i <b class="code">ind - 1</b>. Teraz proszę znaleźć średnią między dwoma elementami o tych indeksach.
+        Jest to wynik funkcji dla listy o parzystej liczbie elementów (<b class="code">rem == 0</b>). 
+    </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else (items[ind - 1] + items[ind]) / 2
+        </pre>
+        <p>
+            Może Pan użyć <b class="code">rem</b> jako indeksu i wariantów jako elementów krotki i przepisać wyrażenie <b class="code">median</b>.
+        </p>
+        <pre class="brush: python">
+median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Jak więc powinno wyglądać moje ostateczne rozwiązanie?</p>
+    </div>
+    <div class="answer">
+        <p>Musi Pan tylko przekształcić kod w wyrażenie funkcji i zwrócić <b class="code">median</b>.</p>
+        <p>Oto całe rozwiązanie:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    items = sorted(data)
+    ind, rem = divmod(len(items), 2)
+    median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+
+    return median
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Proszę pokazać mi więcej rozwiązań!<br />
+        bo chcę być prawdziwym 🥇 Python Ninnjaa!</p>
+    </div>
+    <div class="answer">
+        <p>Jasne, proszę pobrać!</p>
+        <p>
+            Jeśli Państwa <b class="code">half</b> to na przykład <b class="code">2</b>, w rzeczywistości pobierają Państwo trzeci element od początku listy. <b class="code">~</b> daje rzeczywisty trzeci element od końca listy. W przypadku listy z nieparzystą liczbą elementów będzie to ten sam element. Więcej informacji można znaleźć na stronie <a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">explanation</a>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    data.sort()
+    half = len(data) // 2
+
+    return (data[half] + data[~half]) / 2
+        </pre>
+        </div>
+        <p>
+            W bibliotece standardowej Pythona znajduje się moduł <b class="code">statistics</b> z funkcją <b class="code">median</b>. W tym rozwiązaniu po wywołaniu <b class="code">checkio(data)</b> wywoływana jest funkcja <b class="code">median(data)</b>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from statistics import median as checkio
+        </pre>
+        </div>
+        <p>Proszę kliknąć <b>Best Solutions</b> w menu misji i zobaczyć wiele innych ciekawych rozwiązań!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa dobrze!</p>
+    </div>
+    <div class="answer">
+        <p>
+            miło mi to słyszeć!
+        </p>
+    </div>
+</div>
+</body>

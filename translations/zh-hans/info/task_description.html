@@ -1,52 +1,42 @@
-﻿<div class="story" style="margin-bottom: 0">
+<div class="story" style="margin-bottom: 0">
     <div style="text-align: center">
         <img src="{{MEDIA}}elki.png" title="elki" alt="elki" width="600px">
     </div>
 </div>
+
 <p>
-    中位数是一个可将数值集合划分为相等的上下两部分的一个数值。如果列表数据的个数是奇数，则列表中间那个数据就是列表数据的中位数；如果列表数据的个数是偶数，则列表中间那2个数据的算术平均值就是列表数据的中位数。在这个任务里，你将得到一个含有自然数的非空数组（X）。你必须把它分成上下两部分，找到中位数。
+    中位数是一个数字值，它将<strong>排序后</strong>的{% if is_js %}数组{% else %}列表{% endif %} 的上半部分与下半部分分开。 <span>({% if is_js %}array{% else %}list{% endif %})</span>的上半部分与下半部分的数字分开。在{% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>在有奇数实体的情况下，中位数是在{% if is_js %}数组{% else %}列表{% endif %} 的中间找到的数字。 <span>({% if is_js %}array{% else %}list{% endif %})</span>.如果{% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>包含偶数的实体，那么就没有单一的中间值，相反，中位数成为在中间找到的两个数字的平均值。在这个任务中，你会得到一个非空的{% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>的整数 <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.有了它，你必须把上半部分的数字和下半部分的数字分开，并找到中位数。
 </p>
 
 <p>
-    If you want to practice more with the similar case, try
-    <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a> mission.
+    如果你想在类似的情况下多加练习，可以试试<a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a> 任务。
 </p>
 
 <p>
-    <strong>输入: </strong> 一个作为数组的整数(int)列表(list)的。
+   <strong>输入：</strong> {% if is_js %}数组{% else %}列表{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span>有整数 <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
 </p>
 
 <p>
-    <strong>输出: </strong> 数组的中位数(int, float).
+   <strong>输出：</strong>中位数是一个整数或浮点数 <span>{% if is_js %}(number){% else %}(int | float){% endif %}</span>.
 </p>
 
 <div class="for_info_only">
-
     <p>
-        <strong>范例:</strong>
+        <strong>例子：</strong>
     </p>
-<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
-
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
 </div>
 
-
 <p class="for_info_only">
-    <strong>如何使用：</strong>
-    中位数在概率论和统计学中得到应用，它偏态分布中有显著的价值。例如:我们想从一组数据中知道人们的平均财富 -- 100人一个月收入100美元，10人一个月收入1,000,000美元。如果我们算平均值，得到的是91000美元。这是一个完全没有向我们展示真实情况的奇怪的值。所以在这种情况下，中位数会给我们更有用的值和较好的描述。
-    <a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E4%BD%8D%E6%95%B8">维基百科的文章。</a>
+   <strong>它是如何被使用的：</strong>
+    中位数在统计学和概率论中都有应用，它对偏态分布有特别重要的价值。例如：我们想从一组数据中了解人们的平均财富--100人每月挣100美元，10人挣100万美元。如果我们将其平均化，我们会得到91,000美元。这是很奇怪的数值，并没有向我们展示真实的情况。在这种情况下，中位数会给我们提供更有用的价值和更好的画面。
+   <a target="_blank" href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
 </p>
 
-
-<p><strong>前提:</strong><br>
+<p>
+    <strong>前提条件：</strong>
     <ul>
         <li>1 &lt; len(data) &le; 1000</li>
-        <li>all(0 &le; x < 10 ** 6 for x in data)</li>
+        <li>all(0 &le; x &lt; 10 ** 6 for x in data)</li>
     </ul>
 </p>
-
-<!--
-<p class="for_info_only">
-    <strong>How to use TryIt:  </strong><br>
-    <iframe width="560" height="315" src="//www.youtube.com/embed/1R3TmdfzLDY" frameborder="0" allowfullscreen></iframe>
-</p>
--->

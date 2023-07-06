@@ -1,0 +1,137 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>我不知道如何开始解决这个任务。</p>
+    </div>
+    <div class="answer">
+        <p>
+            💡 这个想法是对初始列表进行排序，根据其长度，在中间找到一个或两个元素的索引。然后返回一个或两个的平均值。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>我应该从什么开始呢？</p>
+    </div>
+    <div class="answer">
+        <p>
+            由于中位数是排序列表的一个属性，你应该用内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_sorted.asp">sorted()</a> 函数从你的初始列表中得到排序的列表。
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>如何找到中间指数（或其中两个）？</p>
+    </div>
+    <div class="answer">
+        <p>
+            在这种情况下，内置的<a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> 函数将对你非常有用。它返回商（索引）和除法的提醒。你需要将<b class="code">items</b> 的<a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> 除以<b class="code">2</b> 。
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>我不明白，如何在有指数和提醒的情况下计算中位数。</p>
+    </div>
+    <div class="answer">
+        <p>
+            让我们一起想想。如果你有一个奇数元素的列表，例如，5，你的<b class="code">ind</b> 将是<b class="code">2</b> ，<b class="code">rem</b> -<b class="code">1</b> 。要知道，在Python中计数是从0开始的，索引为2的元素实际上是5个列表中的第三个--你要找的中间元素。所以，如果<b class="code">rem == 1</b> （奇数元素），函数的结果是<b class="code">items[ind]</b> 。
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>帮助我完成这个条件!</p>
+    </div>
+    <div class="answer">
+    <p>
+        如果你对有偶数元素的列表重复前面的提示逻辑，你会发现，你需要索引为<b class="code">ind</b> 和<b class="code">ind - 1</b> 的元素。现在找出具有这些索引的两个元素之间的平均值。
+        这就是偶数元素的列表的函数结果 (<b class="code">rem == 0</b>)。 
+    </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else (items[ind - 1] + items[ind]) / 2
+        </pre>
+        <p>
+            你可以用<b class="code">rem</b> 作为索引，用变体作为元组的元素，重写<b class="code">median</b> 的表达式。
+        </p>
+        <pre class="brush: python">
+median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>那么，我的最终解决方案应该是什么样子的呢？</p>
+    </div>
+    <div class="answer">
+        <p>你只需要把代码包装成函数表达式并返回<b class="code">median</b> 。</p>
+        <p>下面是整个解决方案：</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    items = sorted(data)
+    ind, rem = divmod(len(items), 2)
+    median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+
+    return median
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>告诉我更多的解决方案!<br />
+        因为我想成为一个真正的🥇 Python Ninnjaa!</p>
+    </div>
+    <div class="answer">
+        <p>当然，抓住它!</p>
+        <p>
+            例如，如果你的<b class="code">half</b> 是<b class="code">2</b> ，你实际上是从列表的开头取第三个元素。<b class="code">~</b> 给你实际的从列表的结尾取第三个元素。对于元素数量为奇数的列表，它将是同一个元素。在此阅读更多信息<a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">explanation</a> 。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    data.sort()
+    half = len(data) // 2
+
+    return (data[half] + data[~half]) / 2
+        </pre>
+        </div>
+        <p>
+            在 Python 标准库中有<b class="code">statistics</b> 模块和<b class="code">median</b> 函数。在这个方案中，当你调用<b class="code">checkio(data)</b> 时，会调用<b class="code">median(data)</b> 。
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from statistics import median as checkio
+        </pre>
+        </div>
+        <p>点击任务菜单上的<b>Best Solutions</b> ，可以看到很多其他有趣的解决方案</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>谢谢!我现在知道并理解了更多!一切工作都很顺利!</p>
+    </div>
+    <div class="answer">
+        <p>
+            👍很高兴听到这个消息!
+        </p>
+    </div>
+</div>
+</body>

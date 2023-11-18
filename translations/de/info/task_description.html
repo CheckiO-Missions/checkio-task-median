@@ -1,0 +1,44 @@
+<div class="story" style="margin-bottom: 0">
+    <div style="text-align: center">
+        <img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+        </div>
+</div>
+
+<p>
+    Ein Median ist ein numerischer Wert, der die obere Hälfte eines <strong>sortierten</strong> {% if is_js %}Arrays{% else %}Liste{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> von Zahlen von der unteren Hälfte trennt. In {% if is_js %}array{% else %}list{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> wo es eine ungerade Anzahl von Entitäten gibt, ist der Median die Zahl, die in der Mitte des {% if is_js %}array{% else %}list{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span>. Wenn das {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> eine gerade Anzahl von Entitäten enthält, dann gibt es keinen einzelnen Mittelwert, sondern der Median ist der Durchschnitt der beiden Zahlen in der Mitte. Für diese Aufgabe erhalten Sie ein nicht leeres {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> von ganzen Zahlen <span>{% if is_js %}(number){% else %}(int){% endif %}</span>. Damit müssen Sie die obere Hälfte der Zahlen von der unteren Hälfte trennen und den Median finden.
+</p>
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}median.png" alt="example" style="max-height: 300px"/>
+</p>
+<p>
+    Wenn Sie mehr mit dem ähnlichen Fall üben möchten, versuchen Sie die <a target="_blank" href="https://py.checkio.org/mission/middle-characters/share/0ec0e10f57f485a397fb9a29d9a8c199/">Middle Characters</a> Mission.
+</p>
+
+<p>
+   <strong>Eingabe:</strong> {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}Array{% else %}List{% endif %})</span> mit ganzen Zahlen <span>{% if is_js %}(number){% else %}(int){% endif %}</span>.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Der Median als Ganzzahl oder Fließkommazahl <span>{% if is_js %}(number){% else %}(int | float){% endif %}</span>.
+</p>
+
+<div class="for_info_only">
+    <p>
+        <strong>Beispiele:</strong>
+    </p>
+    <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+</div>
+
+<p class="for_info_only">
+   <strong>Wie er verwendet wird:</strong>
+    Der Median wird in der Statistik und in der Wahrscheinlichkeitstheorie verwendet. Er ist besonders wichtig für schiefe Verteilungen. Ein Beispiel: Wir möchten den durchschnittlichen Wohlstand von Personen aus einer Reihe von Daten ermitteln - 100 Personen verdienen $100 im Monat und 10 Personen verdienen $1.000.000. Wenn wir den Durchschnitt berechnen, erhalten wir $91.000. Das ist ein merkwürdiger Wert und zeigt uns nicht das wahre Bild. In diesem Fall würde uns der Median einen nützlicheren Wert und ein besseres Bild liefern.
+   <a target="_blank" href="http://en.wikipedia.org/wiki/Median">The Article at Wikipedia.</a>
+</p>
+
+<p>
+    <strong>Vorbedingungen:</strong>
+    <ul>
+        <li>1 &lt; len(Daten) &le; 1000</li>
+        <li>all(0 &le; x &lt; 10 ** 6 für x in Daten)</li>
+    </ul>
+</p>

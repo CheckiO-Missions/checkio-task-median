@@ -1,0 +1,137 @@
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        <p>Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.</p>
+    </div>
+    <div class="answer">
+        <p>
+            die Idee ist, die ursprüngliche Liste zu sortieren und je nach ihrer Länge ein oder zwei Elemente in der Mitte anhand ihrer Indizes zu finden. Dann geben Sie eines oder den Durchschnittswert von zwei zurück.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Womit soll ich beginnen?</p>
+    </div>
+    <div class="answer">
+        <p>
+            Da der Median ein Attribut der sortierten Liste ist, sollten Sie mit der eingebauten Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_sorted.asp">sorted()</a> eine sortierte Liste aus Ihrer Ausgangsliste erstellen.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Wie findet man den mittleren Index (oder zwei davon)?</p>
+    </div>
+    <div class="answer">
+        <p>
+            In diesem Fall wird Ihnen die eingebaute Funktion <a target="_blank" href="https://www.w3schools.com/python/ref_func_divmod.asp">divmod()</a> sehr nützlich sein. Sie liefert den Quotienten (Index) und die Erinnerung an die Division. Sie müssen die <a target="_blank" href="https://www.w3schools.com/python/gloss_python_list_length.asp">length()</a> von <b class="code">items</b> in <b class="code">2</b> teilen.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Ich verstehe nicht, wie Sie den Median mit dem Index und der Erinnerung berechnen können.</p>
+    </div>
+    <div class="answer">
+        <p>
+            Lassen Sie uns gemeinsam nachdenken. Wenn Sie eine Liste mit einer ungeraden Anzahl von Elementen haben, z.B. 5, dann ist Ihre <b class="code">ind</b> <b class="code">2</b> und <b class="code">rem</b> - <b class="code">1</b>. Da die Zählung in Python bei 0 beginnt, ist das Element mit dem Index 2 das dritte in der Liste mit fünf Elementen - das mittlere Element, nach dem Sie suchen. Wenn also <b class="code">rem == 1</b> (ungerade Anzahl von Elementen), ist das Ergebnis der Funktion <b class="code">items[ind]</b>.
+        </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else ...
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Helfen Sie mir, diese Bedingung zu erfüllen!</p>
+    </div>
+    <div class="answer">
+    <p>
+        Wenn Sie die Logik aus dem vorherigen Hinweis auf die Liste mit einer geraden Anzahl von Elementen anwenden, finden Sie heraus, dass Sie Elemente mit den Indizes <b class="code">ind</b> und <b class="code">ind - 1</b> benötigen. Ermitteln Sie nun den Durchschnitt zwischen den beiden Elementen mit diesen Indizes.
+        Das ist das Ergebnis der Funktion für die Liste mit gerader Anzahl von Elementen (<b class="code">rem == 0</b>). 
+    </p>
+        <pre class="brush: python">
+items = sorted(data)
+ind, rem = divmod(len(items), 2)
+median = items[ind] if rem == 1 else (items[ind - 1] + items[ind]) / 2
+        </pre>
+        <p>
+            Sie können <b class="code">rem</b> als Index und Varianten als Elemente des Tupels verwenden und den Ausdruck <b class="code">median</b> umschreiben.
+        </p>
+        <pre class="brush: python">
+median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+        </pre>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Wie sollte also meine endgültige Lösung aussehen?</p>
+    </div>
+    <div class="answer">
+        <p>Sie müssen den Code nur in einen Funktionsausdruck verpacken und <b class="code">median</b> zurückgeben.</p>
+        <p>Hier ist die gesamte Lösung:</p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    items = sorted(data)
+    ind, rem = divmod(len(items), 2)
+    median = ((items[ind - 1] + items[ind]) / 2, items[ind])[rem]
+
+    return median
+        </pre>
+        </div>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Zeigen Sie mir mehr Lösungen!<br />
+        denn ich will ein echter 🥇 Python-Ninjaa sein!</p>
+    </div>
+    <div class="answer">
+        <p>Klar, schnapp sie dir!</p>
+        <p>
+            Wenn Ihre <b class="code">half</b> zum Beispiel <b class="code">2</b> ist, nehmen Sie das dritte Element vom Anfang der Liste. <b class="code">~</b> gibt Ihnen das tatsächliche dritte Element vom Ende der Liste. Bei einer Liste mit einer ungeraden Anzahl von Elementen ist es das gleiche Element. Lesen Sie mehr in diesem <a target="_blank" href="https://py.checkio.org/mission/median/publications/veky/python-3/both-sides/share/63e9bd8840f814430eb543a064990714/#comment-23114">explanation</a>.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+def checkio(data: list[int]) -> int | float:
+
+    data.sort()
+    half = len(data) // 2
+
+    return (data[half] + data[~half]) / 2
+        </pre>
+        </div>
+        <p>
+            In der Python-Standardbibliothek gibt es das Modul <b class="code">statistics</b> mit der Funktion <b class="code">median</b>. Bei dieser Lösung wird beim Aufruf von <b class="code">checkio(data)</b> die Funktion <b class="code">median(data)</b> aufgerufen.
+        </p>
+        <div class="spoiler">
+        <pre class="brush: python">
+from statistics import median as checkio
+        </pre>
+        </div>
+        <p>Klicken Sie auf <b>Best Solutions</b> im Missionsmenü und sehen Sie sich viele andere interessante Lösungen an!</p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        <p>Vielen Dank! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!</p>
+    </div>
+    <div class="answer">
+        <p>
+            👍 Freut mich zu hören!
+        </p>
+    </div>
+</div>
+</body>
